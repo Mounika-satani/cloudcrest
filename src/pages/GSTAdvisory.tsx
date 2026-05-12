@@ -1,4 +1,5 @@
 import { ServicePageLayout } from '@/components/ServicePageLayout';
+import { FAQSection } from '@/components/FAQSection';
 import { FileCheck, Receipt, RefreshCw, Search, Truck, Scale } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
@@ -68,6 +69,29 @@ const thriveItems = [
   { title: 'Valuation for Related Party Transactions', desc: 'Apply special valuation rules for transactions with related parties.' },
 ];
 
+const gstFaqs = [
+  {
+    question: 'What is GST compliance?',
+    answer: 'GST compliance refers to a business\'s adherence to the Goods and Services Tax (GST) regulations set by the government. It involves registering for GST, maintaining accurate records, issuing proper invoices, and filing regular returns (monthly, quarterly, or annually). Compliance ensures that businesses collect and remit the correct amount of tax on sales while claiming input tax credits for eligible expenses. Failure to comply can result in penalties, legal issues, and missed opportunities for tax credits. Effective GST compliance helps businesses avoid costly errors and ensures smooth operations within the tax framework.',
+  },
+  {
+    question: 'Who needs to get registered under GST?',
+    answer: 'Any business or individual involved in the supply of goods or services, with an annual turnover exceeding the prescribed threshold limit, needs to comply with GST regulations. This includes manufacturers, traders, service providers, and e-commerce operators. Additionally, businesses engaged in interstate supply or involved in the export of goods and services must also register for GST.',
+  },
+  {
+    question: 'When Does E-Invoice Applicable for My Business?',
+    answer: 'E-Invoicing is mandatory for businesses with a turnover exceeding ₹5 crore in the previous financial year. It helps streamline GST compliance by generating invoices through the government’s e-invoice system, ensuring faster processing and reducing errors.',
+  },
+  {
+    question: 'What services are included in GST advisory?',
+    answer: 'CloudCrest assists businesses with GST audits, tax assessments, and related notices, offering expert guidance throughout the process. We ensure accurate GST filings, provide strategic advice on audits, and help mitigate penalties. Our team works closely with tax authorities to resolve disputes and ensure compliance. We also support GST return filings, tax planning, and audits, helping businesses optimize their GST liabilities and maintain smooth operations.',
+  },
+  {
+    question: 'Can your GST services scale with my business?',
+    answer: 'CloudCrest’s GST advisory services are designed to scale with your business as it grows or expands into new markets. We offer flexible solutions that adjust to changes in turnover, product offerings, or geographic reach, ensuring compliance with local and interstate GST regulations. Our team provides tailored advice to navigate the complexities of multi-state or international GST, helping your business manage tax liabilities and take advantage of available credits as you expand.',
+  },
+];
+
 const GSTAdvisory = () => {
   return (
     <ServicePageLayout
@@ -114,6 +138,9 @@ const GSTAdvisory = () => {
             </div>
           </div>
         </section>
+      }
+      bottomSections={
+        <FAQSection items={gstFaqs} />
       }
     />
   );

@@ -1,4 +1,5 @@
 import { ServicePageLayout } from '@/components/ServicePageLayout';
+import { FAQSection } from '@/components/FAQSection';
 import { BookOpen, CreditCard, BarChart3, Wallet, Package } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
@@ -61,6 +62,29 @@ const benefits = [
   'Audit-ready financial records',
 ];
 
+const bookkeepingFaqs = [
+  {
+    question: 'What is bookkeeping, and why is it essential for my business?',
+    answer: 'Bookkeeping is the process of recording, organizing, and managing your business\'s financial transactions. It ensures that your financial records are accurate and up-to-date, helping you make informed decisions, maintain compliance with tax laws, and prepare for audits or financial reviews.',
+  },
+  {
+    question: 'What type of services includes in bookkeeping?',
+    answer: 'CloudCrest provides a comprehensive range of bookkeeping services, including transaction recording, bank and credit card reconciliations, inventory management, Purchase and sales recording, accounts payable and receivable management, and financial reporting. Our goal is to ensure your financial data is accurate and actionable.',
+  },
+  {
+    question: 'Does the Difference between Receipts and Payments is my Profit?',
+    answer: 'No, the difference between receipts and payments is not your profit because receipts do not only include income; they also include loans, advances, and capital inflows. Similarly, payments do not only represent expenses; they may include asset purchases, loan repayments, and other non-expense cash outflows. Therefore, profit cannot be determined simply by the difference between receipts and payments, as they reflect cash movement rather than actual income and expenses.',
+  },
+  {
+    question: 'How does CloudCrest handle reporting for my business?',
+    answer: 'We deliver customized financial reports, including profit and loss statements, balance sheets, and cash flow & funds flow statements, Accounts Receivables and payables Statements to provide insights into your business’s performance. Our team ensures these reports are easy to understand and available on demand, empowering you to make informed financial decisions.',
+  },
+  {
+    question: 'What makes CloudCrest\'s bookkeeping and reporting services unique?',
+    answer: 'We provide inhouse and virtual accounting services as per requirement of the clients. Our approach includes use of advanced technology and tools for efficient bookkeeping. Opting for latest bookkeeping software ensures your financial data is always secure, accessible, and up-to-date. Additionally, our team of experts works closely with you to tailor our services to your unique business needs.',
+  },
+];
+
 const BookkeepingAndReporting = () => {
   return (
     <ServicePageLayout
@@ -95,6 +119,9 @@ const BookkeepingAndReporting = () => {
             </motion.div>
           </div>
         </section>
+      }
+      bottomSections={
+        <FAQSection items={bookkeepingFaqs} />
       }
     />
   );

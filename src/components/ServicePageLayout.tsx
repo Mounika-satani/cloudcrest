@@ -30,6 +30,7 @@ interface ServicePageLayoutProps {
   ctaTitle?: string;
   ctaDescription?: string;
   additionalSections?: React.ReactNode;
+  bottomSections?: React.ReactNode;
 }
 
 export const ServicePageLayout = ({
@@ -46,6 +47,7 @@ export const ServicePageLayout = ({
   ctaTitle = 'Let Us Simplify for You',
   ctaDescription = 'Contact us to know more about our services',
   additionalSections,
+  bottomSections,
 }: ServicePageLayoutProps) => {
   return (
     <div className="min-h-screen">
@@ -249,6 +251,7 @@ export const ServicePageLayout = ({
         </section>
       )}
 
+      {bottomSections}
       <Footer />
     </div>
   );

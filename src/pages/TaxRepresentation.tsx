@@ -1,4 +1,5 @@
 import { ServicePageLayout } from '@/components/ServicePageLayout';
+import { FAQSection } from '@/components/FAQSection';
 import { Gavel, Receipt, FileText, Shield } from 'lucide-react';
 
 const services = [
@@ -42,6 +43,29 @@ const services = [
   },
 ];
 
+const representationFaqs = [
+  {
+    question: 'What is the scope of Tax Representation services?',
+    answer: 'Cloudcrest provides comprehensive tax representation services, including assistance with tax filings, audits, disputes, and compliance with local and international tax laws. We help reduce tax liabilities, ensure regulatory compliance, and represent your interests in case of audits or disputes with tax authorities.',
+  },
+  {
+    question: 'Can Cloudcrest represent us in tax disputes?',
+    answer: 'Yes, Cloudcrest has extensive experience representing clients with tax disputes. We ensure that your rights are protected, handle negotiations, and work towards favourable resolutions, minimizing the risk of penalties and fines.',
+  },
+  {
+    question: 'Can you Handle the Tax Appeals?',
+    answer: 'Yes, we specialize in handling tax appeals with expertise and professionalism. Our team ensures thorough preparation, accurate documentation, and strong representation before tax authorities to safeguard your interests. Trust us to navigate the complexities of the appeals process and achieve favourable outcomes.',
+  },
+  {
+    question: 'What are the consequences of Depositing the cash into my bank account?',
+    answer: 'Depositing cash into your bank account can attract scrutiny from tax authorities, especially if the amount exceeds prescribed limits. Such deposits may trigger reporting under the Annual Information Statement (AIS) and require you to justify the source of funds. Failure to provide proper documentation can lead to penalties, inquiries, or legal consequences.',
+  },
+  {
+    question: 'Can Cloudcrest assist in structuring our business to optimize tax efficiency?',
+    answer: 'Yes, Cloudcrest provides expert tax advisory services to help structure your business in a tax-efficient manner. We analyse your business model and recommend strategies to minimize tax burdens while ensuring full compliance with applicable tax laws.',
+  },
+];
+
 const TaxRepresentation = () => {
   return (
     <ServicePageLayout
@@ -59,6 +83,9 @@ const TaxRepresentation = () => {
         { text: 'Proactive Guidance: Focused on resolving issues efficiently while ensuring compliance and avoiding future disputes.' },
       ]}
       whyChooseDescription="Facing a tax notice or representation requirement? Don't let it disrupt your operations. Our dedicated team of tax experts is here to manage your compliance and representation needs with professionalism and precision."
+      bottomSections={
+        <FAQSection items={representationFaqs} />
+      }
     />
   );
 };

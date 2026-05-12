@@ -1,4 +1,5 @@
 import { ServicePageLayout } from '@/components/ServicePageLayout';
+import { FAQSection } from '@/components/FAQSection';
 import { Shield, Search, Monitor, FileCheck, Leaf, Scale } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
@@ -59,6 +60,29 @@ const helpItems = [
   'Corporate Governance Support: Assisting with governance requirements under the Companies Act, 2013.',
 ];
 
+const auditFaqs = [
+  {
+    question: 'What is Internal Audit?',
+    answer: 'Internal audit is an independent evaluation process within a company that assesses the effectiveness of its internal controls, risk management, and governance processes. The goal is to ensure that the organization’s operations are efficient, compliant with regulations, and free from fraud or errors, helping management make informed decisions.',
+  },
+  {
+    question: 'Is it mandate to get the Internal Audit done?',
+    answer: 'Internal audit is mandatory for certain companies, such as those meeting specific turnover or net worth criteria, as per regulatory requirements. For others, while it may not be legally required, conducting an internal audit is highly recommended to ensure operational efficiency, identify risks, and maintain compliance with laws and regulations.',
+  },
+  {
+    question: 'How does Cloudcrest ensure that the recommended actions from internal audits are properly implemented and followed through by the organization?',
+    answer: 'We work closely with your team to ensure that audit recommendations are actionable, and we provide ongoing support through implementation plans, monitoring, and follow-ups to ensure effective execution.',
+  },
+  {
+    question: 'What are the key benefits of utilizing Cloudcrest\'s Internal Audit & Risk Management services for our organization?',
+    answer: 'Cloudcrest’s services provide comprehensive risk mitigation, improved compliance, enhanced operational efficiency, and timely identification of vulnerabilities, helping your organization achieve its strategic goals while minimizing risks.',
+  },
+  {
+    question: 'Can Cloudcrest help in preparing for external audits or regulatory reviews?',
+    answer: 'Yes, we assist in preparing for external audits and regulatory reviews by ensuring your internal processes are compliant, documenting necessary controls, and providing guidance to streamline the process and reduce the risk of non-compliance.',
+  },
+];
+
 const InternalAudit = () => {
   return (
     <ServicePageLayout
@@ -107,6 +131,9 @@ const InternalAudit = () => {
             </div>
           </section>
         </>
+      }
+      bottomSections={
+        <FAQSection items={auditFaqs} />
       }
     />
   );

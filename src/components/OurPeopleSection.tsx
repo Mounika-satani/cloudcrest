@@ -1,11 +1,30 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import alokaImg from "../assets/workswith/Aloka Educational and Welfare Society.png";
+import celzeneImg from "../assets/workswith/Celzene IT services Pvt Ltd.png";
+import highOnLoveImg from "../assets/workswith/High On Love Films LLP.png";
+import immitricsImg from "../assets/workswith/Immitrics Overseas Consultancy LLP.png";
+import klrDigitechImg from "../assets/workswith/KLR DIGITECH PRIVATE LIMITED.png";
+import oxygentaImg from "../assets/workswith/Oxygenta Pharmaceuticals Limited.png";
+import pascalcaseImg from "../assets/workswith/Pascalcase Software Private Limited.png";
+import prajayImg from "../assets/workswith/Prajay Megapolis Flat Owners Mutually Aided Cooperative Society.png";
+import pulsebridgeImg from "../assets/workswith/Pulsebridge Health Care Pvt Ltd.png";
+import sanchiImg from "../assets/workswith/Sanchi Educational and Welfare Society.png";
+import towerCloudImg from "../assets/workswith/Tower Cloud Private Limited.png";
+import tristarImg from "../assets/workswith/Tristar Global Academy Pvt Ltd.png";
+import vasathiImg from "../assets/workswith/Vasathi Anandi.png";
+import vijayaVarahiImg from "../assets/workswith/Vijaya Varahi Technologies Private Limited.png";
+import vistaImg from "../assets/workswith/Vista Pharmaceuticals Limited.png";
+import weiterEdgeImg from "../assets/workswith/WEITER EDGE PRIVATE LIMITED.png";
+import wildblueImg from "../assets/workswith/Wildblue Digital LLP.png";
+import xbatteryImg from "../assets/workswith/Xbattery Energy Private Limited.png";
 
 const teamMembers = [
   {
     name: "Mr. Mahesh Dosa",
-    credentials: "FCA(ICAI), B.Com",
+    credentials: "FCA(ICAI), Dip. Ind AS , B.Com",
     description:
-      "Corporate Advisor, Ind AS Compliance Expert and Services in the Field of Financial Reporting and Business Valuation",
+      "Corporate Advisor | Ind AS Compliance | Financial Reporting & Valuation",
     photo:
       "https://cloudcrest.in/wp-content/uploads/2025/03/Mr-Mahesh-Dosa.png",
   },
@@ -104,6 +123,62 @@ const softwareLogos = [
   },
 ];
 
+const workingWithLogos = [
+  { name: "Aloka Educational and Welfare Society", url: alokaImg },
+  { name: "Celzene IT services Pvt Ltd", url: celzeneImg },
+  { name: "High On Love Films LLP", url: highOnLoveImg },
+  { name: "Immitrics Overseas Consultancy LLP", url: immitricsImg },
+  { name: "KLR DIGITECH PRIVATE LIMITED", url: klrDigitechImg },
+  { name: "Oxygenta Pharmaceuticals Limited", url: oxygentaImg },
+  { name: "Pascalcase Software Private Limited", url: pascalcaseImg },
+  { name: "Prajay Megapolis Flat Owners", url: prajayImg },
+  { name: "Pulsebridge Health Care Pvt Ltd", url: pulsebridgeImg },
+  { name: "Sanchi Educational and Welfare Society", url: sanchiImg },
+  { name: "Tower Cloud Private Limited", url: towerCloudImg },
+  { name: "Tristar Global Academy Pvt Ltd", url: tristarImg },
+  { name: "Vasathi Anandi", url: vasathiImg },
+  { name: "Vijaya Varahi Technologies Private Limited", url: vijayaVarahiImg },
+  { name: "Vista Pharmaceuticals Limited", url: vistaImg },
+  { name: "WEITER EDGE PRIVATE LIMITED", url: weiterEdgeImg },
+  { name: "Wildblue Digital LLP", url: wildblueImg },
+  { name: "Xbattery Energy Private Limited", url: xbatteryImg },
+];
+
+
+function InfiniteSlider({
+  items,
+  speed = 40,
+}: {
+  items: { name: string; url: string }[];
+  speed?: number;
+}) {
+  return (
+    <div className="overflow-hidden whitespace-nowrap [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+      <motion.div
+        className="flex items-center gap-16 w-max py-10"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{
+          repeat: Infinity,
+          ease: "linear",
+          duration: speed,
+        }}>
+        {[...items, ...items].map((logo, index) => (
+          <div
+            key={`${logo.name}-${index}`}
+            className="flex-shrink-0 transition-transform duration-300 hover:scale-110 px-4">
+            <img
+              src={logo.url}
+              alt={logo.name}
+              className="h-14 sm:h-20 w-auto object-contain transition-all duration-500"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
 function TeamCard({ member }: { member: (typeof teamMembers)[0] }) {
   const [hovered, setHovered] = useState(false);
 
@@ -142,52 +217,48 @@ function TeamCard({ member }: { member: (typeof teamMembers)[0] }) {
   );
 }
 
-export const OurPeopleSection = () => {
+export const OurPeopleSection = ({ showTeam = true }: { showTeam?: boolean }) => {
   return (
-    // ← This light blue background matches the real website exactly
     <div style={{ backgroundColor: "#e8f4fd" }}>
-      {/* ── TEAM SECTION ── */}
-      <section id="people" className="py-20 scroll-mt-24">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Header — matches real site: blue title + "Members" with lines */}
-          <div className="text-center mb-14">
-            <h2
-              className="text-4xl font-bold mb-2"
-              style={{ color: "#1a9bdc" }}>
-              Our Team
-            </h2>
-            <div className="flex items-center justify-center gap-3">
-              <div
-                className="h-0.5 w-10"
-                style={{ backgroundColor: "#1a9bdc" }}
-              />
-              <span className="text-slate-600 font-medium text-sm tracking-widest uppercase">
-                Members
-              </span>
-              <div
-                className="h-0.5 w-10"
-                style={{ backgroundColor: "#1a9bdc" }}
-              />
+      {showTeam && (
+        <section id="people" className="py-20 scroll-mt-24">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-14">
+              <h2
+                className="text-4xl font-bold mb-2"
+                style={{ color: "#1a9bdc" }}>
+                Our Team
+              </h2>
+              <div className="flex items-center justify-center gap-3">
+                <div
+                  className="h-0.5 w-10"
+                  style={{ backgroundColor: "#1a9bdc" }}
+                />
+                <span className="text-slate-600 font-medium text-sm tracking-widest uppercase">
+                  Members
+                </span>
+                <div
+                  className="h-0.5 w-10"
+                  style={{ backgroundColor: "#1a9bdc" }}
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {teamMembers.map((member) => (
+                <TeamCard key={member.name} member={member} />
+              ))}
             </div>
           </div>
+        </section>
+      )}
 
-          {/* Team Grid with hover overlay */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {teamMembers.map((member) => (
-              <TeamCard key={member.name} member={member} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SOFTWARE LOGOS SECTION ── */}
       <section
         id="software"
         className="py-20"
         style={{ backgroundColor: "#dceef9" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Header */}
-          <div className="text-center mb-14">
+        <div className="max-w-full mx-auto overflow-hidden">
+          <div className="text-center mb-6">
             <h2
               className="text-4xl font-bold mb-2"
               style={{ color: "#1a9bdc" }}>
@@ -208,24 +279,37 @@ export const OurPeopleSection = () => {
             </div>
           </div>
 
-          {/* Logo Grid */}
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-4">
-            {softwareLogos.map((logo) => (
+          <InfiniteSlider items={softwareLogos} speed={60} />
+        </div>
+      </section>
+
+      <section
+        id="working-with"
+        className="py-20"
+        style={{ backgroundColor: "#e8f4fd" }}>
+        <div className="max-w-full mx-auto overflow-hidden">
+          <div className="text-center mb-6">
+            <h2
+              className="text-4xl font-bold mb-2"
+              style={{ color: "#1a9bdc" }}>
+              We’re working With
+            </h2>
+            <div className="flex items-center justify-center gap-3">
               <div
-                key={logo.name}
-                className="group flex flex-col items-center justify-center bg-white rounded-2xl p-4 shadow-sm border border-white hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <img
-                  src={logo.url}
-                  alt={logo.name}
-                  className="h-12 w-auto object-contain transition-all duration-300"
-                  loading="lazy"
-                />
-                <span className="mt-2 text-[10px] font-medium text-slate-400 group-hover:text-blue-500 transition-colors text-center leading-tight">
-                  {logo.name}
-                </span>
-              </div>
-            ))}
+                className="h-0.5 w-10"
+                style={{ backgroundColor: "#1a9bdc" }}
+              />
+              <span className="text-slate-600 font-medium text-sm tracking-widest uppercase">
+                Our Clients
+              </span>
+              <div
+                className="h-0.5 w-10"
+                style={{ backgroundColor: "#1a9bdc" }}
+              />
+            </div>
           </div>
+
+          <InfiniteSlider items={workingWithLogos} speed={80} />
         </div>
       </section>
     </div>

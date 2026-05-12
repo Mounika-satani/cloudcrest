@@ -1,4 +1,5 @@
 import { ServicePageLayout } from '@/components/ServicePageLayout';
+import { FAQSection } from '@/components/FAQSection';
 import { Calculator, Shield, Receipt, FileText, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
@@ -54,6 +55,29 @@ const benefitItems = [
   { title: 'Regulatory Compliance', desc: 'Stay up-to-date with evolving labour laws and tax regulations.' },
 ];
 
+const payrollFaqs = [
+  {
+    question: 'What is payroll management?',
+    answer: 'Payroll management is the process of handling all aspects related to the compensation of employees in an organization. It involves calculating salaries, wages, bonuses, and deductions, ensuring compliance with tax regulations and labour laws, and maintaining accurate records of employee earnings and withholdings.',
+  },
+  {
+    question: 'Why should I outsource payroll management?',
+    answer: 'Outsourcing payroll management allows businesses to save time, reduce errors, and ensure compliance with complex tax regulations and labour laws. It eliminates the administrative burden of handling payroll in-house, freeing up resources to focus on core operations. Outsourced payroll providers offer expertise, accuracy, and efficiency, reducing the risk of penalties due to non-compliance or errors. Additionally, they provide access to advanced tools and technologies, enabling seamless payroll processing and enhanced employee satisfaction.',
+  },
+  {
+    question: 'When does PF and ESI Applicable for my Business?',
+    answer: 'PF (Provident Fund) is applicable if you have 20 or more employees and if they are earning up to ₹15,000 per month, while ESI applies if you have 10 or more employees and they earn ₹21,000 or less. Both ensure social security benefits like retirement savings and medical coverage.',
+  },
+  {
+    question: 'What services that u offer in payroll Management?',
+    answer: 'At CloudCrest, we offer a full range of payroll management services, including salary calculations, tax deductions, statutory compliance, employee benefits management, payslip generation, and timely disbursements. We also handle PF/ESI contributions, payroll reports, and ensure adherence to local labour laws and tax regulations.',
+  },
+  {
+    question: 'Why Cloudcrest for Payroll Management?',
+    answer: 'At Cloudcrest, we provide efficient payroll management tailored to your business needs. Our expert team ensures timely and accurate processing, full tax compliance, and confidentiality. With cloud-based solutions, you can access payroll data anytime, anywhere, while we handle the complexities so you can focus on growth.',
+  },
+];
+
 const PayrollManagement = () => {
   return (
     <ServicePageLayout
@@ -100,6 +124,9 @@ const PayrollManagement = () => {
             </div>
           </div>
         </section>
+      }
+      bottomSections={
+        <FAQSection items={payrollFaqs} />
       }
     />
   );

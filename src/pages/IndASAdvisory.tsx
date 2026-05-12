@@ -1,4 +1,5 @@
 import { ServicePageLayout } from '@/components/ServicePageLayout';
+import { FAQSection } from '@/components/FAQSection';
 import { BookOpen, Globe, BarChart3, Briefcase } from 'lucide-react';
 
 const services = [
@@ -36,6 +37,25 @@ const services = [
   },
 ];
 
+const indAsFaqs = [
+  {
+    question: 'What is Ind AS advisory services?',
+    answer: 'Ind AS (Indian Accounting Standards) advisory services assist businesses in interpreting and implementing these standards, which are based on International Financial Reporting Standards (IFRS). These services help companies navigate the complexities of Ind AS, ensuring accurate financial reporting and compliance. They offer guidance on various aspects, including accounting policies, financial statement preparation, and disclosures. Ultimately, these services contribute to improved transparency and investor confidence in the financial health of businesses.',
+  },
+  {
+    question: 'Does Ind As is Applicable for My business?',
+    answer: 'Ind AS (Indian Accounting Standards) is applicable to companies based on their size, nature, and other criteria. If your business is a listed company or in certain sectors like banking or insurance, or if it meets specific financial reporting requirements, Ind AS will govern your accounting practices, ensuring transparency and consistency in financial reporting.',
+  },
+  {
+    question: 'If a holding company is Ind AS compliant, is it mandatory for its subsidiary company to also follow Ind AS?',
+    answer: 'Yes, if a holding company is compliant with Ind AS, its subsidiary company is also required to follow Ind AS, unless the subsidiary is a small company or falls under exceptions specified by the regulatory authorities. This ensures consistency in the financial reporting of the entire group.',
+  },
+  {
+    question: 'How can your Ind AS advisory services help in improving financial reporting and decision-making?',
+    answer: 'By aligning financial reporting with Ind AS, our advisory services help businesses present a clearer, more accurate picture of their financial health. This transparency builds trust with stakeholders and supports better decision-making by providing relevant, timely, and precise financial data. Additionally, we help identify opportunities for cost savings, improved profitability, and more effective risk management, empowering businesses to make data-driven decisions that drive growth and long-term success.',
+  },
+];
+
 const IndASAdvisory = () => {
   return (
     <ServicePageLayout
@@ -53,6 +73,9 @@ const IndASAdvisory = () => {
         { text: 'Commitment to ensuring compliance, accuracy, and stakeholder confidence.' },
       ]}
       whyChooseDescription="Whether you are adopting Ind AS, aligning with IFRS, or navigating the complexities of international accounting, Cloudcrest is your trusted partner. Contact us today to learn how we can help your business achieve accounting excellence and global growth."
+      bottomSections={
+        <FAQSection items={indAsFaqs} />
+      }
     />
   );
 };

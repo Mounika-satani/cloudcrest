@@ -1,4 +1,5 @@
 import { ServicePageLayout } from '@/components/ServicePageLayout';
+import { FAQSection } from '@/components/FAQSection';
 import { FileBarChart, Search, BarChart3, Shield, Globe } from 'lucide-react';
 
 const services = [
@@ -44,6 +45,29 @@ const services = [
   },
 ];
 
+const dprFaqs = [
+  {
+    question: 'What is a Detailed Project Report (DPR), and how can Cloudcrest assist in preparing it?',
+    answer: 'A Detailed Project Report (DPR) is a comprehensive document that outlines the project\'s objectives, financial projections, technical details, and execution strategy. Cloudcrest helps in preparing a tailored DPR by analysing the project’s scope, conducting feasibility studies, and ensuring compliance with regulatory requirements. Our expertise ensures that the DPR is well-structured, persuasive, and aligned with investor expectations, increasing the likelihood of securing funding and successful project implementation.',
+  },
+  {
+    question: 'How long does it take to prepare a DPR?',
+    answer: 'The time required to prepare a Detailed Project Report (DPR) depends on the complexity and scale of the project. Typically, it can take anywhere from 2 to 4 weeks to gather data, conduct analysis, and finalize the report. Cloudcrest ensures a timely and efficient process, with regular updates to keep you informed at each stage of preparation.',
+  },
+  {
+    question: 'Can the DPR be used to attract investors or secure funding?',
+    answer: 'Yes, a Detailed Project Report (DPR) is a crucial tool for attracting investors and securing funding. It provides a clear, structured presentation of the project\'s feasibility, financial viability, and potential returns, making it easier for investors to assess the opportunity. Cloudcrest ensures the DPR is crafted to highlight key factors that appeal to investors, such as risk management, projected profits, and growth potential.',
+  },
+  {
+    question: 'What information do you need from us to create the DPR?',
+    answer: 'To create a Detailed Project Report (DPR), we need comprehensive information about the project, including its objectives, scope, and timeline. We also require financial data such as budgets, cost estimates, and projected revenue, along with any market research or industry analysis relevant to the project. Additionally, details on regulatory requirements, technical specifications, and resource requirements will help ensure the DPR is well-rounded and accurate.',
+  },
+  {
+    question: 'How do you handle revisions or updates to the DPR?',
+    answer: 'We handle revisions or updates to the Detailed Project Report (DPR) through a collaborative approach, ensuring that all feedback is carefully reviewed and incorporated. Clients can request changes at any stage, and we provide regular updates to ensure the DPR aligns with evolving project goals. Cloudcrest guarantees a flexible process, making sure that the final report reflects the most accurate and relevant information for your project’s success.',
+  },
+];
+
 const DetailedProjectReport = () => {
   return (
     <ServicePageLayout
@@ -61,6 +85,9 @@ const DetailedProjectReport = () => {
         { text: 'End-to-End Support: From data collection to report submission and follow-ups with financial institutions, we handle it all.' },
       ]}
       whyChooseDescription="At Cloudcrest, we are committed to helping you achieve your business goals by delivering reports that demonstrate your project's potential. Whether you're raising funds, seeking bank loans, or planning a new venture, our reports are designed to make an impactful impression on stakeholders."
+      bottomSections={
+        <FAQSection items={dprFaqs} />
+      }
     />
   );
 };

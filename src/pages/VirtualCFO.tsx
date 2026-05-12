@@ -1,4 +1,5 @@
 import { ServicePageLayout } from '@/components/ServicePageLayout';
+import { FAQSection } from '@/components/FAQSection';
 import { LineChart, Wallet, BarChart3, Shield, Scissors, Briefcase, Monitor } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
@@ -68,6 +69,29 @@ const beneficiaries = [
   { title: 'Growing Businesses', desc: 'Navigate complex financial landscapes with strategic support.' },
 ];
 
+const cfoFaqs = [
+  {
+    question: 'What does Cloudcrest’s Virtual CFO service include, and how can it benefit our business?',
+    answer: 'Cloudcrest’s Virtual CFO service offers strategic financial guidance, expert analysis, and streamlined financial management tailored to your business needs. From budgeting and forecasting to cash flow optimization and compliance, we ensure your company stays financially healthy and growth-focused. With our service, you gain the expertise of a seasoned CFO without the cost of a full-time hire, empowering your business to achieve its financial goals.',
+  },
+  {
+    question: 'How often will we communicate and receive updates?',
+    answer: 'We ensure regular communication tailored to your business needs, with updates provided weekly, bi-weekly, or monthly, depending on the agreed schedule. In addition, we offer real-time insights and support via email or calls for urgent matters. This proactive approach ensures you are always informed and confident in your financial decisions.',
+  },
+  {
+    question: 'Can you help us with fundraising or investor relations?',
+    answer: 'Yes, we can assist with fundraising and investor relations by preparing detailed financial projections, business plans, and pitch decks that resonate with potential investors. Our team also helps in identifying suitable funding opportunities, negotiating terms, and maintaining transparent communication with stakeholders. We ensure your business is well-positioned to attract and secure the capital it needs for growth.',
+  },
+  {
+    question: 'What is the cost structure for Virtual CFO services?',
+    answer: 'The cost structure for Virtual CFO services typically depends on the scope of work, the complexity of your business, and the level of involvement required. We offer flexible pricing models, such as a monthly retainer, hourly rates, or project-based fees, ensuring that you only pay for the services you need. We provide transparent pricing, with no hidden costs, and tailor the structure to align with your business’s financial goals and budget.',
+  },
+  {
+    question: 'How does Cloudcrest’s Virtual CFO service integrate with our existing financial team or processes?',
+    answer: 'Cloudcrest’s Virtual CFO service seamlessly integrates with your existing financial team or processes by providing strategic oversight, guidance, and expertise. We work alongside your internal staff, offering support and filling any gaps in financial management while ensuring that all operations are aligned with best practices and your company\'s financial objectives.',
+  },
+];
+
 const VirtualCFO = () => {
   return (
     <ServicePageLayout
@@ -115,6 +139,9 @@ const VirtualCFO = () => {
             </div>
           </div>
         </section>
+      }
+      bottomSections={
+        <FAQSection items={cfoFaqs} />
       }
     />
   );

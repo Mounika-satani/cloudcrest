@@ -47,7 +47,7 @@
     --gradient-accent: linear-gradient(135deg, hsl(160, 65%, 40%) 0%, hsl(170, 60%, 45%) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(220, 65%, 12%) 0%, hsl(220, 55%, 22%) 50%, hsl(200, 45%, 28%) 100%);
     --gradient-glass: linear-gradient(135deg, hsla(0, 0%, 100%, 0.1) 0%, hsla(0, 0%, 100%, 0.05) 100%);
-    
+
     --shadow-soft: 0 4px 20px -4px hsla(220, 65%, 18%, 0.1);
     --shadow-card: 0 8px 32px -8px hsla(220, 65%, 18%, 0.12);
     --shadow-accent: 0 8px 24px -6px hsla(160, 65%, 40%, 0.35);
@@ -112,7 +112,12 @@
     font-family: 'Inter', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Space Grotesk', sans-serif;
   }
 }
@@ -149,8 +154,15 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   .animate-gradient {
@@ -159,7 +171,14 @@
   }
 
   @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
   }
 }

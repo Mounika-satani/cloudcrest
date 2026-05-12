@@ -31,6 +31,16 @@ const navItems = [
     ],
   },
   {
+    label: 'Our Insights',
+    href: '#',
+    children: [
+      { label: 'Tax Insights', href: '/tax-domestic-and-international' },
+      { label: 'GST Insights', href: '/gst-and-tax-advisory' },
+      { label: 'IndAs Insights', href: '/ind-as-advisory' },
+      { label: 'Other Business Insights', href: '/detailed-project-report' },
+    ],
+  },
+  {
     label: 'About',
     href: '/about-us',
     children: [
@@ -65,11 +75,10 @@ export const Navbar = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        showTransparent
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${showTransparent
           ? 'bg-transparent py-5'
           : 'bg-background/95 backdrop-blur-lg shadow-lg py-3'
-      }`}
+        }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link to="/" className="flex items-center">
@@ -87,11 +96,10 @@ export const Navbar = () => {
             >
               <Link
                 to={item.href}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-1 ${
-                  showTransparent
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-1 ${showTransparent
                     ? 'text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10'
                     : 'text-foreground hover:text-accent hover:bg-accent/10'
-                }`}
+                  }`}
               >
                 {item.label}
                 {item.children && <ChevronDown className="w-4 h-4" />}
@@ -137,9 +145,8 @@ export const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`lg:hidden p-2 rounded-lg ${
-            showTransparent ? 'text-primary-foreground' : 'text-foreground'
-          }`}
+          className={`lg:hidden p-2 rounded-lg ${showTransparent ? 'text-primary-foreground' : 'text-foreground'
+            }`}
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>

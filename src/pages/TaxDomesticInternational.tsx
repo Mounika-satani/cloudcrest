@@ -1,4 +1,5 @@
 import { ServicePageLayout } from '@/components/ServicePageLayout';
+import { FAQSection } from '@/components/FAQSection';
 import { Globe, Building2, Users, FileText, Gavel, Briefcase, Scale } from 'lucide-react';
 
 const services = [
@@ -53,6 +54,33 @@ const services = [
   },
 ];
 
+const taxFaqs = [
+  {
+    question: 'What specific taxation services does Cloudcrest Firm offer?',
+    answer: 'At Cloudcrest, we offer a wide range of tax services, including tax preparation for Corporates and Non-corporates, tax planning to minimize liabilities, and expert advice on navigating complex tax matters. Whether you\'re looking to file your taxes or need guidance on long-term tax strategies, we provide tailored solutions to meet your needs.',
+  },
+  {
+    question: 'Can you help with international tax issues and cross-border taxation?',
+    answer: 'Yes, we specialize in international tax services, offering solutions for cross-border taxation, transfer pricing, and navigating tax treaties. Whether you’re expanding your business globally or dealing with international income, we help you manage tax responsibilities across different jurisdictions.',
+  },
+  {
+    question: 'Does Cloudcrest Provides the Tax Representation Service?',
+    answer: 'Yes, Cloudcrest offers tax representation services, acting on your behalf in dealings with tax authorities. We handle communications, resolve disputes, and ensure your tax filings are accurate and compliant. Our expert team supports you in managing audits, assessments, and notices to minimize risks and penalties.',
+  },
+  {
+    question: 'How is residential status relevant for the levy of income tax?',
+    answer: 'Residential status determines the scope of an individual\'s or entity’s taxable income in India. A resident is taxed on global income, while a non-resident is only taxed on income earned within India. The status depends on the duration of stay in India during a financial year, impacting tax liabilities and exemptions.',
+  },
+  {
+    question: 'What are the tax implications for NRIs renting out property in India?',
+    answer: 'NRIs renting out property in India are subject to tax on rental income. The income is taxed under the head "Income from House Property" at applicable rates, after deductions like municipal taxes and 30% standard deduction. Additionally, NRIs may be required to pay tax at source (TDS) on the rent received, and they can claim tax relief through double taxation avoidance agreements (DTAA) if applicable.',
+  },
+  {
+    question: 'How do you ensure compliance with changing tax laws and regulations?',
+    answer: 'Our team is constantly monitoring changes in tax laws, using advanced tools and software to stay up-to-date. We also work closely with tax experts and regularly attend training to ensure that your tax filings and strategies are fully compliant with current regulations.',
+  },
+];
+
 const TaxDomesticInternational = () => {
   return (
     <ServicePageLayout
@@ -70,6 +98,9 @@ const TaxDomesticInternational = () => {
         { text: 'We support multinational and Indian companies, expatriates, and resident and non-resident Indians.' },
       ]}
       whyChooseDescription="Cloudcrest is committed to helping you navigate complex tax landscapes with ease and confidence. Contact us today to learn how we can support your business with end-to-end taxation solutions."
+      bottomSections={
+        <FAQSection items={taxFaqs} />
+      }
     />
   );
 };

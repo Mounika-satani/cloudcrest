@@ -1,4 +1,5 @@
 import { ServicePageLayout } from '@/components/ServicePageLayout';
+import { FAQSection } from '@/components/FAQSection';
 import { Scale, FileText, Shield, Users, BookOpen, Briefcase } from 'lucide-react';
 
 const services = [
@@ -65,6 +66,29 @@ const services = [
   },
 ];
 
+const companyLawFaqs = [
+  {
+    question: 'Does Company law Applicable to all Businesses?',
+    answer: 'No, Company Law specifically applies to businesses registered as companies under the Companies Act 1956 & the Companies Act 2013. Other types of businesses, like sole proprietorships, partnerships and LLPs are governed under other respective laws. However, if your business is incorporated as a company, it must comply with the provisions of the Companies Act.',
+  },
+  {
+    question: 'Does Appointment of Auditor is mandate?',
+    answer: 'Yes, appointing an auditor is mandatory for companies registered under the Companies Act. Every company must appoint an auditor to audit its financial statements and ensure compliance with legal and regulatory requirements.',
+  },
+  {
+    question: 'What are the Annual Forms for a Company to file?',
+    answer: 'A company must file annual forms as per the Companies Act, including Form AOC-4 to submit financial statements, Form MGT-7 for the annual return with company and shareholder details, and Form ADT-1 to notify the appointment of an auditor. Additionally, directors need to file DIR-3 KYC to update their KYC details annually. Other forms may be required based on the company’s specific compliance needs.',
+  },
+  {
+    question: 'Can Cloudcrest provide ongoing legal support for corporate governance and internal policies?',
+    answer: 'Yes, we offer continuous legal support in corporate governance, advising on the development of internal policies, ensuring compliance with corporate laws, and assisting in the implementation of best practices for effective governance.',
+  },
+  {
+    question: 'How does Cloudcrest stay updated on changing regulations and legal trends to provide the best legal advice for our company?',
+    answer: 'Cloudcrest maintains a strong focus on continuous learning and staying updated on legal developments. We monitor changes in laws, regulations, and industry trends through regular legal research, attending seminars, and collaborating with legal networks, ensuring our advice is always aligned with the latest legal standards and practices.',
+  },
+];
+
 const CompanyLawAdvisory = () => {
   return (
     <ServicePageLayout
@@ -82,6 +106,9 @@ const CompanyLawAdvisory = () => {
         { text: 'Proactive Approach: Helping you stay ahead of legal changes and mitigate compliance risks.' },
       ]}
       whyChooseDescription="Let us take the complexity out of corporate regulations and help your business thrive. Contact Cloudcrest today to explore how our Company Law & Legal Advisory Services can empower your business."
+      bottomSections={
+        <FAQSection items={companyLawFaqs} />
+      }
     />
   );
 };

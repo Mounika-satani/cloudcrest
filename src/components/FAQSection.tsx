@@ -39,7 +39,9 @@ const faqs = [
   },
 ];
 
-export const FAQSection = () => {
+export const FAQSection = ({ items }: { items?: { question: string; answer: string }[] }) => {
+  const activeFaqs = items || faqs;
+
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -68,7 +70,7 @@ export const FAQSection = () => {
           className="max-w-3xl mx-auto"
         >
           <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
+            {activeFaqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
