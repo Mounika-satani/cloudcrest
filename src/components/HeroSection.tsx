@@ -6,11 +6,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 
 const features = [
-  'Flexible Fee',
-  'Smooth Transition',
-  'Personal Connections',
-  'Expert Advises',
-  'Best Support',
+  'Customized Fee Structure',
+  'Effortless Onboarding',
+  'Personalized Client Engagement',
+  'Strategic Advisory Services',
+  'Dedicated Client Support',
+  'Digital Transformation of Financial Records'
 ];
 
 export const HeroSection = () => {
@@ -76,14 +77,14 @@ export const HeroSection = () => {
             </motion.div>
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Accounting Hassles Gone.{' '}
-              <span className="text-accent">Your Life Simplified.</span>
+              Unlocking Business Potential with{' '}
+              <span className="text-accent">Precision Accounting.</span>
             </h1>
 
             <p className="text-lg text-primary-foreground/80 mb-8 max-w-xl">
-              Your trusted partner for seamless accounting, compliance, and
-              business advisory services. Let us handle the numbers while you
-              focus on growth.
+              Your trusted Virtual business Partner for Streamlined Financial bookkeeping, Compliance, and Business Advisory. Focus on What Matters Most, While We Manage the Financial Complexities
+
+
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">

@@ -2,10 +2,16 @@ import { useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar as CalendarIcon, FileText, ArrowRight, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { Calendar as CalendarIcon, FileText, ArrowRight, ChevronRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Calendar } from '@/components/ui/calendar';
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 const complianceData: Record<string, { date: string; day: number; title: string; description: string }[]> = {
   'April 2025': [
@@ -213,6 +219,21 @@ const months = [
   'January 2026', 'February 2026', 'March 2026'
 ];
 
+const CALENDAR_URL = "https://cloudcrest-enterprise.vercel.app/compliance-calendar.ics";
+const GOOGLE_CAL_URL = `https://calendar.google.com/calendar/render?cid=${CALENDAR_URL}`;
+const OUTLOOK_OFFICE_URL = `https://outlook.office.com/calendar/0/addcalendar?url=${CALENDAR_URL}&name=India%20Compliance%20Calendar`;
+const OUTLOOK_LIVE_URL = `https://outlook.live.com/calendar/0/addcalendar?url=${CALENDAR_URL}&name=India%20Compliance%20Calendar`;
+const WEBCAL_URL = `webcal://cloudcrest-enterprise.vercel.app/compliance-calendar.ics`;
+
+const handleExport = () => {
+  const link = document.createElement('a');
+  link.href = '/compliance-calendar.ics';
+  link.download = 'compliance-calendar.ics';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 const CompliancesCalendar = () => {
   const [selectedMonth, setSelectedMonth] = useState('April 2025');
   const monthDate = new Date(selectedMonth);
@@ -223,7 +244,6 @@ const CompliancesCalendar = () => {
     <div className="min-h-screen bg-[#F8FAFC]">
       <Navbar />
 
-      {/* Simplified Hero */}
       <section className="relative pt-32 pb-12 md:pt-40 md:pb-16" style={{ background: 'var(--gradient-hero)' }}>
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`, backgroundSize: '40px 40px' }} />
@@ -232,7 +252,7 @@ const CompliancesCalendar = () => {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-block px-4 py-2 rounded-full bg-accent/20 text-accent-foreground text-xs font-bold mb-4 backdrop-blur-md border border-accent/20"
+            className="inline-block px-4 py-2 rounded-full bg-accent/20 text-accent-foreground text-xs font-bold mb-4 backdrop-blur-md border border-accent/20 font-display tracking-widest"
           >
             <CalendarIcon className="w-4 h-4 inline mr-2" />
             UPCOMING DEADLINES
@@ -255,7 +275,7 @@ const CompliancesCalendar = () => {
             {/* COLUMN 1: LEFT - Month Selector */}
             <aside className="lg:col-span-2 hidden lg:block sticky top-28">
               <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-                <h3 className="text-xs font-bold text-slate-400 mb-4 px-2 uppercase tracking-widest flex items-center gap-2">
+                <h3 className="text-xs font-bold text-slate-400 mb-4 px-2 uppercase tracking-widest flex items-center gap-2 font-display">
                   <CheckCircle2 className="w-4 h-4 text-accent" />
                   Timeline
                 </h3>
@@ -264,7 +284,7 @@ const CompliancesCalendar = () => {
                     <button
                       key={month}
                       onClick={() => setSelectedMonth(month)}
-                      className={`w-full text-left px-3 py-2 rounded-lg text-xs font-bold transition-all duration-200 flex items-center justify-between group ${selectedMonth === month
+                      className={`w-full text-left px-3 py-2 rounded-lg text-xs font-bold transition-all duration-200 flex items-center justify-between group font-display ${selectedMonth === month
                         ? 'bg-accent text-white shadow-md shadow-accent/20'
                         : 'text-slate-500 hover:bg-slate-50 hover:text-accent border border-transparent'
                         }`}
@@ -285,7 +305,7 @@ const CompliancesCalendar = () => {
                   <button
                     key={month}
                     onClick={() => setSelectedMonth(month)}
-                    className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all ${selectedMonth === month ? 'bg-accent text-white' : 'bg-white border border-slate-200 text-slate-500'
+                    className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all font-display ${selectedMonth === month ? 'bg-accent text-white' : 'bg-white border border-slate-200 text-slate-500'
                       }`}
                   >
                     {month.split(' ')[0]}
@@ -306,16 +326,16 @@ const CompliancesCalendar = () => {
                         className="flex items-start gap-4 p-6 bg-white rounded-2xl border border-slate-100 hover:border-accent/30 hover:shadow-xl transition-all duration-300 relative group overflow-hidden"
                       >
                         {/* THE EXACT CARD STYLE FROM PIC */}
-                        <div className="w-16 h-16 rounded-xl bg-[#0F172A] flex items-center justify-center flex-shrink-0 text-white z-10 transition-transform group-hover:scale-105">
+                        <div className="w-16 h-16 rounded-xl bg-[#0F172A] flex items-center justify-center flex-shrink-0 text-white z-10 transition-transform group-hover:scale-105 font-display">
                           <div className="text-center">
-                            <span className="text-[10px] font-bold text-white/50 block uppercase leading-none mb-1">{selectedMonth.split(' ')[0]}</span>
+                            <span className="text-[10px] font-bold text-white/50 block uppercase leading-none mb-1 tracking-wider">{selectedMonth.split(' ')[0]}</span>
                             <span className="text-2xl font-black block leading-none">{event.day}</span>
                           </div>
                         </div>
                         <div className="flex-1 z-10">
                           <div className="flex items-center gap-2 mb-1">
                             <FileText className="w-4 h-4 text-accent" />
-                            <h4 className="font-bold text-[#0F172A] text-lg leading-tight">{event.title}</h4>
+                            <h4 className="font-bold text-[#0F172A] text-lg leading-tight font-display">{event.title}</h4>
                           </div>
                           <p className="text-slate-500 text-sm leading-relaxed">{event.description}</p>
                         </div>
@@ -337,7 +357,7 @@ const CompliancesCalendar = () => {
                   Facing complexity in filings? Let our legal experts handle it for you.
                 </p>
                 <Link to="/contact-us">
-                  <Button variant="accent" size="lg" className="rounded-full px-8 shadow-lg shadow-accent/20">
+                  <Button variant="accent" size="lg" className="rounded-full px-8 shadow-lg shadow-accent/20 font-display">
                     Get Expert Assistance <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
@@ -345,14 +365,69 @@ const CompliancesCalendar = () => {
             </main>
 
             {/* COLUMN 3: RIGHT - Small Calendar Card */}
-            <aside className="lg:col-span-3 col-span-12 sticky top-28">
+            <aside className="lg:col-span-3 col-span-12 sticky top-28 space-y-6">
+              {/* Subscribe Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="accent"
+                    className="w-full justify-between h-14 rounded-xl text-base font-bold shadow-lg shadow-accent/20 group hover:scale-[1.02] transition-all font-display"
+                  >
+                    Subscribe to calendar
+                    <ChevronDown className="w-5 h-5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  className="w-[var(--radix-dropdown-menu-trigger-width)] bg-white rounded-2xl border border-slate-100 p-2 shadow-2xl z-50 animate-in fade-in zoom-in-95 duration-200"
+                  align="start"
+                >
+                  <DropdownMenuItem
+                    className="py-3 px-4 rounded-xl focus:bg-slate-50 cursor-pointer text-slate-700 font-semibold transition-colors"
+                    onClick={() => window.open(GOOGLE_CAL_URL, '_blank')}
+                  >
+                    Google Calendar
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="py-3 px-4 rounded-xl focus:bg-slate-50 cursor-pointer text-slate-700 font-semibold transition-colors"
+                    onClick={() => window.open(WEBCAL_URL, '_blank')}
+                  >
+                    iCalendar
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="py-3 px-4 rounded-xl focus:bg-slate-50 cursor-pointer text-slate-700 font-semibold transition-colors"
+                    onClick={() => window.open(OUTLOOK_OFFICE_URL, '_blank')}
+                  >
+                    Outlook 365
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="py-3 px-4 rounded-xl focus:bg-slate-50 cursor-pointer text-slate-700 font-semibold transition-colors"
+                    onClick={() => window.open(OUTLOOK_LIVE_URL, '_blank')}
+                  >
+                    Outlook Live
+                  </DropdownMenuItem>
+                  <div className="h-px bg-slate-100 my-1 mx-2" />
+                  <DropdownMenuItem
+                    className="py-3 px-4 rounded-xl focus:bg-slate-50 cursor-pointer text-slate-700 font-semibold transition-colors"
+                    onClick={handleExport}
+                  >
+                    Export .ics File
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="py-3 px-4 rounded-xl focus:bg-slate-50 cursor-pointer text-slate-700 font-semibold transition-colors"
+                    onClick={handleExport}
+                  >
+                    Export Outlook .ics File
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="bg-white rounded-[2rem] border border-slate-200 p-6 shadow-xl"
               >
                 <div className="flex items-center justify-between mb-4 px-2">
-                  <h3 className="font-bold text-[#0F172A] text-sm flex items-center gap-2">
+                  <h3 className="font-bold text-[#0F172A] text-sm flex items-center gap-2 font-display">
                     <CalendarIcon className="w-4 h-4 text-accent" />
                     {selectedMonth}
                   </h3>
