@@ -42,7 +42,15 @@ export const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
+    const sub = formData.subject || 'Website Contact Form';
+    const subject = encodeURIComponent(`${sub} - Message from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Phone: ${formData.phone}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    window.location.href = `mailto:info@cloudcrest.in?subject=${subject}&body=${body}`;
   };
 
   return (

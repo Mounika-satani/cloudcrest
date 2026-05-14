@@ -49,7 +49,14 @@ const ContactUs = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Contact form submitted:', formData);
+    const subject = encodeURIComponent('Consultation Request from ' + formData.firstName + ' ' + formData.lastName);
+    const body = encodeURIComponent(
+      `Name: ${formData.firstName} ${formData.lastName}\n` +
+      `Company: ${formData.company}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    window.location.href = `mailto:info@cloudcrest.in?subject=${subject}&body=${body}`;
   };
 
   return (

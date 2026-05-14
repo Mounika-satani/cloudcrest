@@ -109,7 +109,7 @@ export const ConsultingSection = () => {
             Your Accounting & Bookkeeping Partner for life. Let's discuss how we
             can help your business grow.
           </p>
-          <Button variant="hero" size="xl">
+          <Button variant="hero" size="xl" onClick={() => window.location.href = '/contact-us'}>
             Schedule A Call
             <ArrowRight className="w-5 h-5" />
           </Button>

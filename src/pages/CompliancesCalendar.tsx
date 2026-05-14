@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const complianceData: Record<string, { date: string; day: number; title: string; description: string }[]> = {
-  'April 2025': [
+  'April 2026': [
     { date: '01-Apr', day: 1, title: 'Trade License Renewal (First 3 Months Delay)', description: '25% penalty on the trade fee for renewal applications submitted between April 1st and June 30th.' },
     { date: '07-Apr', day: 7, title: 'ECB-2 Return', description: 'Monthly return on External Commercial Borrowing transactions (March data)' },
     { date: '10-Apr', day: 10, title: 'GSTR-7 / GSTR-8', description: 'TDS Return & E-Commerce Operator Statement (March data)' },
@@ -30,7 +30,7 @@ const complianceData: Record<string, { date: string; day: number; title: string;
     { date: '30-Apr', day: 30, title: 'ER-1 (Employment Exchange)', description: 'Quarterly Return (Q4: Jan–Mar) – Compulsory Notification of Vacancies Act' },
     { date: '30-Apr', day: 30, title: 'TDS Monthly Deposit', description: 'TDS deducted in March (non-govt deductors)' },
   ],
-  'May 2025': [
+  'May 2026': [
     { date: '07-May', day: 7, title: 'TDS Monthly Deposit', description: 'TDS deducted in March (non-govt deductors)' },
     { date: '07-May', day: 7, title: 'ECB-2 Return', description: 'Monthly return on External Commercial Borrowing transactions (April data)' },
     { date: '10-May', day: 10, title: 'GSTR-7 / GSTR-8', description: 'TDS Return & E-Commerce Operator Statement (April data)' },
@@ -50,15 +50,15 @@ const complianceData: Record<string, { date: string; day: number; title: string;
     { date: '31-May', day: 31, title: 'Form 61A (SFT - Securities)', description: 'Half-yearly reporting of listed securities and mutual fund transactions - For Period October to March' },
     { date: '31-May', day: 31, title: 'Form 61B', description: 'Statement for FATCA/CRS reportable accounts (Financial Institutions)' },
   ],
-  'June 2025': [
+  'June 2026': [
     { date: '07-Jun', day: 7, title: 'TDS Monthly Deposit', description: 'TDS deducted in March (non-govt deductors)' },
     { date: '07-Jun', day: 7, title: 'ECB-2 Return', description: 'Monthly return on External Commercial Borrowing transactions (May data)' },
     { date: '10-Jun', day: 10, title: 'GSTR-7 / GSTR-8', description: 'TDS Return & E-Commerce Operator Statement (May data)' },
     { date: '10-Jun', day: 10, title: 'Professional Tax', description: 'Monthly payment of Professional Tax (May)' },
     { date: '11-Jun', day: 11, title: 'GSTR-1 (Monthly)', description: 'Details of Outward Supplies (May data)' },
     { date: '15-Jun', day: 15, title: 'Form 131 (16A)', description: 'TDS Certificate for Non-Salary payments (Q4: Jan–Mar)' },
-    { date: '15-Jun', day: 15, title: 'Form 130 (16)', description: 'TDS Certificate for Salary (Annual – FY 2024-25)' },
-    { date: '15-Jun', day: 15, title: 'Advance Tax – Q1', description: 'First instalment of Corporate Advance Tax for FY 2025-26' },
+    { date: '15-Jun', day: 15, title: 'Form 130 (16)', description: 'TDS Certificate for Salary (Annual – FY 2025-26)' },
+    { date: '15-Jun', day: 15, title: 'Advance Tax – Q1', description: 'First instalment of Corporate Advance Tax for FY 2026-27' },
     { date: '15-Jun', day: 15, title: 'ECR – EPF / ESI', description: 'Monthly PF & ESI challan-cum-return (May contributions)' },
     { date: '20-Jun', day: 20, title: 'GSTR-3B (Monthly)', description: 'Monthly GST Return for May data' },
     { date: '30-Jun', day: 30, title: 'DIR-3 KYC', description: 'KYC of Directors with MCA' },
@@ -67,7 +67,7 @@ const complianceData: Record<string, { date: string; day: number; title: string;
     { date: '30-Jun', day: 30, title: 'GSTR-4', description: 'Annual Return under Composition Scheme (GST).' },
     { date: '30-Jun', day: 30, title: 'Annual Performance Report (APR)', description: 'Annual Progress Report for working EOU/STP/EHTP units, covering export performance, NFE earning, etc.' },
   ],
-  'July 2025': [
+  'July 2026': [
     { date: '01-Jul', day: 1, title: 'Trade License Renewal (Delayed First 3 Months)', description: '50% penalty on the trade fee for renewal applications submitted from July 1st onwards.' },
     { date: '07-Jul', day: 7, title: 'TDS Monthly Deposit', description: 'TDS deducted in March (non-govt deductor’s)' },
     { date: '07-Jul', day: 7, title: 'ECB-2 Return', description: 'Monthly return on External Commercial Borrowing transactions (June data)' },
@@ -85,7 +85,7 @@ const complianceData: Record<string, { date: string; day: number; title: string;
     { date: '31-Jul', day: 31, title: 'ITR-1 & ITR-2', description: 'Income Tax Return filing for Individuals (non-audit)' },
     { date: '31-Jul', day: 31, title: 'TDS Return – Form 138 {Form 24Q} /140 {Form 26Q} /144 {Form 27Q}', description: 'Quarterly TDS Return for Q1 (Apr–Jun)' },
   ],
-  'August 2025': [
+  'August 2026': [
     { date: '07-Aug', day: 7, title: 'TDS Monthly Deposit', description: 'TDS deducted in March (non-govt deductors)' },
     { date: '07-Aug', day: 7, title: 'ECB-2 Return', description: 'Monthly return on External Commercial Borrowing transactions (July data)' },
     { date: '10-Aug', day: 10, title: 'GSTR-7 / GSTR-8', description: 'TDS Return & E-Commerce Operator Statement (July data)' },
@@ -96,20 +96,20 @@ const complianceData: Record<string, { date: string; day: number; title: string;
     { date: '20-Aug', day: 20, title: 'GSTR-3B (Monthly)', description: 'Monthly GST Return for July data' },
     { date: '31-Aug', day: 31, title: 'ITR-3 & ITR-4 (non-Audit)', description: 'Income Tax Return for business/profession (non-audit cases)' },
   ],
-  'September 2025': [
+  'September 2026': [
     { date: '07-Sep', day: 7, title: 'TDS Monthly Deposit', description: 'TDS deducted in March (non-govt deductors)' },
     { date: '07-Sep', day: 7, title: 'ECB-2 Return', description: 'Monthly return on External Commercial Borrowing transactions (August data)' },
     { date: '10-Sep', day: 10, title: 'GSTR-7 / GSTR-8', description: 'TDS Return & E-Commerce Operator Statement (August data)' },
     { date: '10-Sep', day: 10, title: 'Professional Tax', description: 'Monthly payment of Professional Tax (August)' },
     { date: '11-Sep', day: 11, title: 'GSTR-1 (Monthly)', description: 'Details of Outward Supplies (August data)' },
-    { date: '15-Sep', day: 15, title: 'Advance Tax – Q2', description: 'Second instalment of Corporate Advance Tax for FY 2025-26' },
+    { date: '15-Sep', day: 15, title: 'Advance Tax – Q2', description: 'Second instalment of Corporate Advance Tax for FY 2026-27' },
     { date: '15-Sep', day: 15, title: 'ECR – EPF / ESI', description: 'Monthly PF & ESI challan-cum-return (August contributions)' },
     { date: '20-Sep', day: 20, title: 'GSTR-3B (Monthly)', description: 'Monthly GST Return for August data' },
     { date: '30-Sep', day: 30, title: 'Audit Report – Form 112', description: 'Charitable/Religious Trust Audit Report' },
     { date: '30-Sep', day: 30, title: 'Form 26 (3CB/3CD)', description: 'Tax Audit Report (Companies – non-transfer pricing cases)' },
     { date: '30-Sep', day: 30, title: 'AGM (Last Date)', description: 'Annual General Meeting to be held (last date as per Companies Act)' },
   ],
-  'October 2025': [
+  'October 2026': [
     { date: '07-Oct', day: 7, title: 'TDS Monthly Deposit', description: 'TDS deducted in March (non-govt deductors)' },
     { date: '07-Oct', day: 7, title: 'ECB-2 Return', description: 'Monthly return on External Commercial Borrowing transactions (September data)' },
     { date: '10-Oct', day: 10, title: 'GSTR-7 / GSTR-8', description: 'TDS Return & E-Commerce Operator Statement (September data)' },
@@ -130,7 +130,7 @@ const complianceData: Record<string, { date: string; day: number; title: string;
     { date: '31-Oct', day: 31, title: 'TDS Return – Form 138 {Form 24Q} /140 {Form 26Q} /144 {Form 27Q}', description: 'Quarterly TDS Return for Q2 (Jul–Sep)' },
     { date: '31-Oct', day: 31, title: 'MSME-1', description: 'Half-yearly return for outstanding payments to micro & small vendors (Apr–Sep)' },
   ],
-  'November 2025': [
+  'November 2026': [
     { date: '07-Nov', day: 7, title: 'TDS Monthly Deposit', description: 'TDS deducted in March (non-govt deductors)' },
     { date: '07-Nov', day: 7, title: 'ECB-2 Return', description: 'Monthly return on External Commercial Borrowing transactions (October data)' },
     { date: '10-Nov', day: 10, title: 'GSTR-7 / GSTR-8', description: 'TDS Return & E-Commerce Operator Statement (October data)' },
@@ -144,17 +144,17 @@ const complianceData: Record<string, { date: string; day: number; title: string;
     { date: '29-Nov', day: 29, title: 'PAS-6', description: 'Reconciliation of Share Capital Audit Report – Half-Yearly (Apr–Sep period)' },
     { date: '30-Nov', day: 30, title: 'ITR – Transfer Pricing', description: 'Income Tax Return if Transfer Pricing applies' },
   ],
-  'December 2025': [
+  'December 2026': [
     { date: '01-Dec', day: 1, title: 'Labor License', description: 'Annual Fee payment without Penalty' },
     { date: '07-Dec', day: 7, title: 'TDS Monthly Deposit', description: 'TDS deducted in March (non-govt deductors)' },
     { date: '07-Dec', day: 7, title: 'ECB-2 Return', description: 'Monthly return on External Commercial Borrowing transactions (November data)' },
     { date: '10-Dec', day: 10, title: 'GSTR-7 / GSTR-8', description: 'TDS Return & E-Commerce Operator Statement (November data)' },
     { date: '10-Dec', day: 10, title: 'Professional Tax', description: 'Monthly payment of Professional Tax (November)' },
     { date: '11-Dec', day: 11, title: 'GSTR-1 (Monthly)', description: 'Details of Outward Supplies (November data)' },
-    { date: '15-Dec', day: 15, title: 'Advance Tax – Q3', description: 'Third instalment of Corporate Advance Tax for FY 2025-26' },
+    { date: '15-Dec', day: 15, title: 'Advance Tax – Q3', description: 'Third instalment of Corporate Advance Tax for FY 2026-27' },
     { date: '15-Dec', day: 15, title: 'ECR – EPF / ESI', description: 'Monthly PF & ESI challan-cum-return (November contributions)' },
     { date: '20-Dec', day: 20, title: 'GSTR-3B (Monthly)', description: 'Monthly GST Return for November data' },
-    { date: '31-Dec', day: 31, title: 'GSTR-9 & GSTR-9C', description: 'GST Annual Return & Audit for FY 2025-2026' },
+    { date: '31-Dec', day: 31, title: 'GSTR-9 & GSTR-9C', description: 'GST Annual Return & Audit for FY 2026-2027' },
     { date: '31-Dec', day: 31, title: 'APR (FEMA)', description: 'Annual Performance Report for Overseas Direct Investment (ODI)' },
     { date: '31-Dec', day: 31, title: 'FCRA – Form FC-4', description: 'Annual Return for Trust/Society receiving foreign contributions' },
     { date: '31-Dec', day: 31, title: 'Labour Welfare Fund', description: 'Deduction and payment of LWF contribution' },
@@ -162,7 +162,7 @@ const complianceData: Record<string, { date: string; day: number; title: string;
     { date: '31-Dec', day: 31, title: 'National & Festival Holidays', description: 'Display of holiday list for following year' },
     { date: '31-Dec', day: 31, title: 'Labor License Penalty', description: 'Annual Fee payment with 25% Penalty' },
   ],
-  'January 2026': [
+  'January 2027': [
     { date: '07-Jan', day: 7, title: 'TDS Monthly Deposit', description: 'TDS deducted in March (non-govt deductors)' },
     { date: '07-Jan', day: 7, title: 'ECB-2 Return', description: 'Monthly return on External Commercial Borrowing transactions (December data)' },
     { date: '10-Jan', day: 10, title: 'GSTR-7 / GSTR-8', description: 'TDS Return & E-Commerce Operator Statement (December data)' },
@@ -182,7 +182,7 @@ const complianceData: Record<string, { date: string; day: number; title: string;
     { date: '31-Jan', day: 31, title: 'Labour Welfare Fund', description: 'Filing of LWF Statement with authorities' },
     { date: '31-Jan', day: 31, title: 'Form 61A (SFT - Securities)', description: 'Half-yearly reporting of listed securities and mutual fund transactions' },
   ],
-  'February 2026': [
+  'February 2027': [
     { date: '01-Feb', day: 1, title: 'Payment of Bonus Act', description: 'Annual Return filing under Payment of Bonus Act' },
     { date: '01-Feb', day: 1, title: 'Payment of Wages (KA / HP)', description: 'Annual Return under Payment of Wages Act (KA/HP)' },
     { date: '01-Feb', day: 1, title: 'Minimum Wages – Rest', description: 'Annual Return for other states' },
@@ -197,33 +197,38 @@ const complianceData: Record<string, { date: string; day: number; title: string;
     { date: '15-Feb', day: 15, title: 'ECR – EPF / ESI', description: 'Monthly PF & ESI challan-cum-return (January contributions)' },
     { date: '20-Feb', day: 20, title: 'GSTR-3B (Monthly)', description: 'Monthly GST Return for January data' },
   ],
-  'March 2026': [
+  'March 2027': [
     { date: '07-Mar', day: 7, title: 'ECB-2 Return', description: 'Monthly return on External Commercial Borrowing transactions (February data)' },
     { date: '07-Mar', day: 7, title: 'TDS Monthly Deposit', description: 'TDS deposit for February' },
     { date: '10-Mar', day: 10, title: 'GSTR-7 / GSTR-8', description: 'TDS Return & E-Commerce Operator Statement (February data)' },
     { date: '10-Mar', day: 10, title: 'Professional Tax', description: 'Monthly payment of Professional Tax (February)' },
     { date: '11-Mar', day: 11, title: 'GSTR-1 (Monthly)', description: 'Details of Outward Supplies (February data)' },
-    { date: '15-Mar', day: 15, title: 'Advance Tax – Q4 Final', description: 'Final instalment of Corporate Advance Tax for FY 2025-26' },
+    { date: '15-Mar', day: 15, title: 'Advance Tax – Q4 Final', description: 'Final instalment of Corporate Advance Tax for FY 2026-27' },
     { date: '15-Mar', day: 15, title: 'ECR – EPF / ESI', description: 'Monthly PF & ESI challan-cum-return (February contributions)' },
     { date: '20-Mar', day: 20, title: 'GSTR-3B (Monthly)', description: 'Monthly GST Return for February data' },
     { date: '31-Mar', day: 31, title: 'DI Reporting (Annual)', description: 'FEMA: Annual Downstream Investment confirmation' },
     { date: '31-Mar', day: 31, title: 'Trade License Renewal', description: 'Annual renewal of the license to avoid penalties and operate legally. (Apply 1st week to 1st month prior)' },
-    { date: '31-Mar', day: 31, title: 'Form GST RFD-11 (LUT)', description: 'Filing of Letter of Undertaking to export goods or services without payment of IGST for the next financial year (FY 2026-27).' },
-    { date: '31-Mar', day: 31, title: 'Form GST CMP-02', description: 'Intimation by an existing Regular Taxpayer to opt for the Composition Scheme or Composition to Regular Taxpayer for the next financial year (FY 2026-27).' },
+    { date: '31-Mar', day: 31, title: 'Form GST RFD-11 (LUT)', description: 'Filing of Letter of Undertaking to export goods or services without payment of IGST for the next financial year (FY 2027-28).' },
+    { date: '31-Mar', day: 31, title: 'Form GST CMP-02', description: 'Intimation by an existing Regular Taxpayer to opt for the Composition Scheme or Composition to Regular Taxpayer for the next financial year (FY 2027-28).' },
   ],
 };
 
 const months = [
-  'April 2025', 'May 2025', 'June 2025', 'July 2025', 'August 2025',
-  'September 2025', 'October 2025', 'November 2025', 'December 2025',
-  'January 2026', 'February 2026', 'March 2026'
+  'April 2026', 'May 2026', 'June 2026', 'July 2026', 'August 2026',
+  'September 2026', 'October 2026', 'November 2026', 'December 2026',
+  'January 2027', 'February 2027', 'March 2027'
 ];
 
-const CALENDAR_URL = "https://cloudcrest-enterprise.vercel.app/compliance-calendar.ics";
+const getCalendarUrl = () => {
+  if (typeof window === 'undefined') return 'https://cloudcrest-enterprise.vercel.app/compliance-calendar.ics';
+  return `${window.location.origin}/compliance-calendar.ics`;
+};
+
+const CALENDAR_URL = getCalendarUrl();
 const GOOGLE_CAL_URL = `https://calendar.google.com/calendar/render?cid=${CALENDAR_URL}`;
 const OUTLOOK_OFFICE_URL = `https://outlook.office.com/calendar/0/addcalendar?url=${CALENDAR_URL}&name=India%20Compliance%20Calendar`;
 const OUTLOOK_LIVE_URL = `https://outlook.live.com/calendar/0/addcalendar?url=${CALENDAR_URL}&name=India%20Compliance%20Calendar`;
-const WEBCAL_URL = `webcal://cloudcrest-enterprise.vercel.app/compliance-calendar.ics`;
+const WEBCAL_URL = (typeof window !== 'undefined' ? window.location.origin.replace(/^https?/, 'webcal') : 'webcal://cloudcrest-enterprise.vercel.app') + '/compliance-calendar.ics';
 
 const handleExport = () => {
   const link = document.createElement('a');
@@ -235,10 +240,22 @@ const handleExport = () => {
 };
 
 const CompliancesCalendar = () => {
-  const [selectedMonth, setSelectedMonth] = useState('April 2025');
+  const [selectedMonth, setSelectedMonth] = useState(() => {
+    const today = new Date();
+    return today.toLocaleString('default', { month: 'long', year: 'numeric' });
+  });
+  const [highlightedDay, setHighlightedDay] = useState<number | null>(null);
+
+  const handleMonthSelect = (month: string) => {
+    setSelectedMonth(month);
+    setHighlightedDay(null);
+  };
+
+  const displayMonths = months.includes(selectedMonth) ? months : [...months, selectedMonth];
   const monthDate = new Date(selectedMonth);
   const events = complianceData[selectedMonth] || [];
   const importantDates = events.map(e => new Date(monthDate.getFullYear(), monthDate.getMonth(), e.day));
+  const todayDate = new Date();
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
@@ -262,7 +279,7 @@ const CompliancesCalendar = () => {
             animate={{ opacity: 1, y: 0 }}
             className="font-display text-4xl md:text-5xl font-bold text-white"
           >
-            COMPLIANCE CALENDAR – INDIA (FY 2025-26)
+            COMPLIANCE CALENDAR – INDIA (FY 2026-27)
           </motion.h1>
         </div>
       </section>
@@ -280,10 +297,10 @@ const CompliancesCalendar = () => {
                   Timeline
                 </h3>
                 <div className="space-y-1">
-                  {months.map((month) => (
+                  {displayMonths.map((month) => (
                     <button
                       key={month}
-                      onClick={() => setSelectedMonth(month)}
+                      onClick={() => handleMonthSelect(month)}
                       className={`w-full text-left px-3 py-2 rounded-lg text-xs font-bold transition-all duration-200 flex items-center justify-between group font-display ${selectedMonth === month
                         ? 'bg-accent text-white shadow-md shadow-accent/20'
                         : 'text-slate-500 hover:bg-slate-50 hover:text-accent border border-transparent'
@@ -301,10 +318,10 @@ const CompliancesCalendar = () => {
             <main className="lg:col-span-7 col-span-12 space-y-4">
               {/* Mobile Month Filter (Simple Select/Tabs) */}
               <div className="lg:hidden flex overflow-x-auto no-scrollbar gap-2 mb-6 pb-2 px-2">
-                {months.map((month) => (
+                {displayMonths.map((month) => (
                   <button
                     key={month}
-                    onClick={() => setSelectedMonth(month)}
+                    onClick={() => handleMonthSelect(month)}
                     className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all font-display ${selectedMonth === month ? 'bg-accent text-white' : 'bg-white border border-slate-200 text-slate-500'
                       }`}
                   >
@@ -316,32 +333,52 @@ const CompliancesCalendar = () => {
               <div className="space-y-4">
                 <AnimatePresence mode="popLayout">
                   {events.length > 0 ? (
-                    events.map((event, index) => (
-                      <motion.div
-                        key={`${selectedMonth}-${event.title}`}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ delay: index * 0.05 }}
-                        className="flex items-start gap-4 p-6 bg-white rounded-2xl border border-slate-100 hover:border-accent/30 hover:shadow-xl transition-all duration-300 relative group overflow-hidden"
-                      >
-                        {/* THE EXACT CARD STYLE FROM PIC */}
-                        <div className="w-16 h-16 rounded-xl bg-[#0F172A] flex items-center justify-center flex-shrink-0 text-white z-10 transition-transform group-hover:scale-105 font-display">
-                          <div className="text-center">
-                            <span className="text-[10px] font-bold text-white/50 block uppercase leading-none mb-1 tracking-wider">{selectedMonth.split(' ')[0]}</span>
-                            <span className="text-2xl font-black block leading-none">{event.day}</span>
+                    events.map((event, index) => {
+                      const isHighlighted = highlightedDay === event.day;
+                      const isToday = todayDate.getDate() === event.day && todayDate.getMonth() === monthDate.getMonth() && todayDate.getFullYear() === monthDate.getFullYear();
+
+                      return (
+                        <motion.div
+                          id={`event-${event.day}`}
+                          key={`${selectedMonth}-${event.title}-${index}`}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{
+                            opacity: 1,
+                            y: 0,
+                            scale: isHighlighted ? 1.02 : 1
+                          }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ delay: index * 0.05 }}
+                          className={`flex items-start gap-4 p-6 bg-white rounded-2xl border transition-all duration-300 relative group overflow-hidden ${isHighlighted
+                              ? 'border-accent bg-accent/5 shadow-xl shadow-accent/20 ring-2 ring-accent ring-offset-2 z-20'
+                              : isToday
+                                ? 'border-rose-500 shadow-lg shadow-rose-500/20'
+                                : 'border-slate-100 hover:border-accent/30 hover:shadow-xl'
+                            }`}
+                        >
+                          {/* THE EXACT CARD STYLE FROM PIC */}
+                          <div className={`w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white z-10 transition-transform group-hover:scale-105 font-display ${isHighlighted
+                              ? 'bg-accent'
+                              : isToday
+                                ? 'bg-rose-500'
+                                : 'bg-[#0F172A]'
+                            }`}>
+                            <div className="text-center">
+                              <span className="text-[10px] font-bold text-white/50 block uppercase leading-none mb-1 tracking-wider">{selectedMonth.split(' ')[0]}</span>
+                              <span className="text-2xl font-black block leading-none">{event.day}</span>
+                            </div>
                           </div>
-                        </div>
-                        <div className="flex-1 z-10">
-                          <div className="flex items-center gap-2 mb-1">
-                            <FileText className="w-4 h-4 text-accent" />
-                            <h4 className="font-bold text-[#0F172A] text-lg leading-tight font-display">{event.title}</h4>
+                          <div className="flex-1 z-10">
+                            <div className="flex items-center gap-2 mb-1">
+                              <FileText className="w-4 h-4 text-accent" />
+                              <h4 className="font-bold text-[#0F172A] text-lg leading-tight font-display">{event.title}</h4>
+                            </div>
+                            <p className="text-slate-500 text-sm leading-relaxed">{event.description}</p>
                           </div>
-                          <p className="text-slate-500 text-sm leading-relaxed">{event.description}</p>
-                        </div>
-                        <div className="absolute right-0 top-0 h-full w-1 bg-accent transform translate-x-1 group-hover:translate-x-0 transition-transform duration-300" />
-                      </motion.div>
-                    ))
+                          <div className="absolute right-0 top-0 h-full w-1 bg-accent transform translate-x-1 group-hover:translate-x-0 transition-transform duration-300" />
+                        </motion.div>
+                      );
+                    })
                   ) : (
                     <div className="text-center py-20 bg-white rounded-2xl border border-dashed border-slate-200">
                       <CalendarIcon className="w-12 h-12 text-slate-200 mx-auto mb-4" />
@@ -439,13 +476,30 @@ const CompliancesCalendar = () => {
 
                 <Calendar
                   mode="single"
+                  selected={highlightedDay ? new Date(monthDate.getFullYear(), monthDate.getMonth(), highlightedDay) : undefined}
+                  onSelect={(date) => {
+                    if (date) {
+                      const day = date.getDate();
+                      setHighlightedDay(day);
+                      setTimeout(() => {
+                        const el = document.getElementById(`event-${day}`);
+                        if (el) {
+                          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                      }, 50);
+                    } else {
+                      setHighlightedDay(null);
+                    }
+                  }}
                   month={monthDate}
                   disableNavigation
                   modifiers={{
-                    important: importantDates
+                    important: importantDates,
+                    today: todayDate
                   }}
                   modifiersClassNames={{
-                    important: "!bg-accent !text-white !rounded-full font-bold shadow-md shadow-accent/30"
+                    important: "!bg-accent !text-white !rounded-full font-bold shadow-md shadow-accent/30",
+                    today: "!bg-rose-500 !text-white !rounded-full font-bold shadow-md shadow-rose-500/30"
                   }}
                   className="w-full"
                   classNames={{
