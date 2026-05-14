@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
   {
@@ -32,6 +33,8 @@ const contactInfo = [
 ];
 
 export const ContactSection = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,17 +43,49 @@ export const ContactSection = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const sub = formData.subject || 'Website Contact Form';
-    const subject = encodeURIComponent(`${sub} - Message from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Phone: ${formData.phone}\n` +
-      `Email: ${formData.email}\n\n` +
-      `Message:\n${formData.message}`
-    );
-    window.location.href = `mailto:info@cloudcrest.in?subject=${subject}&body=${body}`;
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "68b5884a-5f88-485f-aafb-887b8e693bc4",
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          subject: formData.subject || "Website Contact Form",
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "We'll get back to you within 24 hours.",
+        });
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      } else {
+        toast({
+          title: "Error",
+          description: "There was a problem sending your message. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch {
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -101,6 +136,8 @@ export const ContactSection = () => {
                     {item.href ? (
                       <a
                         href={item.href}
+                        target={item.href.startsWith('https') ? '_blank' : undefined}
+                        rel={item.href.startsWith('https') ? 'noopener noreferrer' : undefined}
                         className="text-white font-medium hover:text-accent transition-colors text-sm md:text-base">
                         {item.value}
                       </a>
@@ -147,6 +184,7 @@ export const ContactSection = () => {
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-[#0F172A] px-1">Your Name</label>
                     <Input
+                      required
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={(e) =>
@@ -159,6 +197,7 @@ export const ContactSection = () => {
                     <label className="text-sm font-bold text-[#0F172A] px-1">Email Address</label>
                     <Input
                       type="email"
+                      required
                       placeholder="john@example.com"
                       value={formData.email}
                       onChange={(e) =>
@@ -198,6 +237,7 @@ export const ContactSection = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-[#0F172A] px-1">Your Message</label>
                   <Textarea
+                    required
                     placeholder="Tell us about your business needs..."
                     rows={4}
                     value={formData.message}
@@ -212,9 +252,10 @@ export const ContactSection = () => {
                   type="submit"
                   variant="accent"
                   size="xl"
+                  disabled={isSubmitting}
                   className="w-full h-14 rounded-2xl shadow-xl shadow-accent/20 group text-lg font-bold">
-                  Send Message
-                  <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {!isSubmitting && <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />}
                 </Button>
               </form>
             </div>

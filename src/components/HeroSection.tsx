@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
-import { Check, Phone, Mail, ArrowRight } from 'lucide-react';
+import { Check, Phone, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 const features = [
   'Customized Fee Structure',
@@ -15,6 +16,8 @@ const features = [
 ];
 
 export const HeroSection = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,16 +26,49 @@ export const HeroSection = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent('Call Back Request from ' + formData.firstName + ' ' + formData.lastName);
-    const body = encodeURIComponent(
-      `Name: ${formData.firstName} ${formData.lastName}\n` +
-      `Phone: ${formData.phone}\n` +
-      `Email: ${formData.email}\n\n` +
-      `Message:\n${formData.message}`
-    );
-    window.location.href = `mailto:info@cloudcrest.in?subject=${subject}&body=${body}`;
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: "68b5884a-5f88-485f-aafb-887b8e693bc4",
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
+          phone: formData.phone,
+          email: formData.email || "no-reply@cloudcrest.in",
+          message: formData.message,
+          subject: `Call Back Request from ${formData.firstName} ${formData.lastName}`,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: 'Request Sent!',
+          description: "We'll call you back shortly.",
+        });
+        setFormData({ firstName: '', lastName: '', phone: '', email: '', message: '' });
+      } else {
+        toast({
+          title: 'Error',
+          description: 'Could not send your request. Please try again.',
+          variant: 'destructive',
+        });
+      }
+    } catch {
+      toast({
+        title: 'Error',
+        description: 'Could not send your request. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -112,21 +148,18 @@ export const HeroSection = () => {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button variant="hero" size="xl" className="group" onClick={() => {
-                const element = document.getElementById('contact');
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                  window.location.href = '/contact-us';
-                }
-              }}>
-                Schedule a Call
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="hero-outline" size="xl">
-                <Phone className="w-5 h-5" />
-                +91-8977079433
-              </Button>
+              <a href="tel:+918977079433">
+                <Button variant="hero" size="xl" className="group">
+                  Schedule a Call
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </a>
+              <a href="tel:+918977079433">
+                <Button variant="hero-outline" size="xl">
+                  <Phone className="w-5 h-5" />
+                  +91-8977079433
+                </Button>
+              </a>
             </div>
           </motion.div>
 
@@ -144,6 +177,7 @@ export const HeroSection = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <Input
+                    name="First Name"
                     placeholder="First Name"
                     value={formData.firstName}
                     onChange={(e) =>
@@ -152,6 +186,7 @@ export const HeroSection = () => {
                     className="bg-accent-foreground/10 border-accent-foreground/20 text-accent-foreground placeholder:text-accent-foreground/60"
                   />
                   <Input
+                    name="Last Name"
                     placeholder="Last Name"
                     value={formData.lastName}
                     onChange={(e) =>
@@ -162,6 +197,7 @@ export const HeroSection = () => {
                 </div>
 
                 <Input
+                  name="Phone"
                   type="tel"
                   placeholder="Phone"
                   value={formData.phone}
@@ -172,6 +208,7 @@ export const HeroSection = () => {
                 />
 
                 <Input
+                  name="email"
                   type="email"
                   placeholder="Email"
                   value={formData.email}
@@ -182,6 +219,7 @@ export const HeroSection = () => {
                 />
 
                 <Textarea
+                  name="message"
                   placeholder="Message"
                   rows={3}
                   value={formData.message}
@@ -195,10 +233,10 @@ export const HeroSection = () => {
                   type="submit"
                   variant="outline"
                   size="lg"
+                  disabled={isSubmitting}
                   className="w-full border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent font-bold"
                 >
-                  <Mail className="w-5 h-5" />
-                  Request Call Back
+                  {isSubmitting ? 'Sending...' : 'Request Call Back'}
                 </Button>
               </form>
             </div>

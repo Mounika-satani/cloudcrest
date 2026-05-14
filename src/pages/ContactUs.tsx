@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 const contactInfo = [
   {
@@ -39,6 +40,8 @@ const contactInfo = [
 ];
 
 const ContactUs = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -47,16 +50,49 @@ const ContactUs = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent('Consultation Request from ' + formData.firstName + ' ' + formData.lastName);
-    const body = encodeURIComponent(
-      `Name: ${formData.firstName} ${formData.lastName}\n` +
-      `Company: ${formData.company}\n` +
-      `Email: ${formData.email}\n\n` +
-      `Message:\n${formData.message}`
-    );
-    window.location.href = `mailto:info@cloudcrest.in?subject=${subject}&body=${body}`;
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: "68b5884a-5f88-485f-aafb-887b8e693bc4",
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
+          company: formData.company,
+          email: formData.email,
+          message: formData.message,
+          subject: `Consultation Request from ${formData.firstName} ${formData.lastName}`,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: 'Request Sent!',
+          description: "We'll get back to you within 24 hours.",
+        });
+        setFormData({ firstName: '', lastName: '', company: '', email: '', message: '' });
+      } else {
+        toast({
+          title: 'Error',
+          description: 'There was a problem sending your message. Please try again.',
+          variant: 'destructive',
+        });
+      }
+    } catch {
+      toast({
+        title: 'Error',
+        description: 'There was a problem sending your message. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -155,11 +191,13 @@ const ContactUs = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <Input
+                      required
                       placeholder="First Name"
                       value={formData.firstName}
                       onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     />
                     <Input
+                      required
                       placeholder="Last Name"
                       value={formData.lastName}
                       onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
@@ -174,12 +212,14 @@ const ContactUs = () => {
 
                   <Input
                     type="email"
+                    required
                     placeholder="Email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
 
                   <Textarea
+                    required
                     placeholder="Message"
                     rows={5}
                     value={formData.message}
@@ -187,9 +227,15 @@ const ContactUs = () => {
                     className="resize-none"
                   />
 
-                  <Button type="submit" variant="accent" size="lg" className="w-full">
-                    Request Consultation
-                    <ArrowRight className="w-5 h-5" />
+                  <Button
+                    type="submit"
+                    variant="accent"
+                    size="lg"
+                    disabled={isSubmitting}
+                    className="w-full"
+                  >
+                    {isSubmitting ? 'Sending...' : 'Request Consultation'}
+                    {!isSubmitting && <ArrowRight className="w-5 h-5" />}
                   </Button>
                 </form>
               </div>

@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Link } from 'react-router-dom';
 import { LucideIcon } from 'lucide-react';
+import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 interface ServiceItem {
   title: string;
@@ -49,6 +52,45 @@ export const ServicePageLayout = ({
   additionalSections,
   bottomSections,
 }: ServicePageLayoutProps) => {
+  const { toast } = useToast();
+  const [callbackForm, setCallbackForm] = useState({ name: '', phone: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleCallbackSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: "68b5884a-5f88-485f-aafb-887b8e693bc4",
+          name: callbackForm.name,
+          phone: callbackForm.phone,
+          email: callbackForm.email,
+          message: callbackForm.message || 'No message provided',
+          subject: `Call Back Request from ${callbackForm.name}`,
+        }),
+      });
+
+      if (response.ok) {
+        toast({ title: 'Request Sent!', description: "We'll call you back shortly." });
+        setSubmitted(true);
+        setCallbackForm({ name: '', phone: '', email: '', message: '' });
+      } else {
+        toast({ title: 'Error', description: 'Could not send your request. Please try again.', variant: 'destructive' });
+      }
+    } catch {
+      toast({ title: 'Error', description: 'Could not send your request. Please try again.', variant: 'destructive' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -187,21 +229,90 @@ export const ServicePageLayout = ({
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-3xl p-8 md:p-12 text-center"
+            className="rounded-3xl overflow-hidden"
             style={{ background: 'var(--gradient-primary)' }}
           >
-            <h3 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-              {ctaTitle}
-            </h3>
-            <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
-              {ctaDescription}
-            </p>
-            <Link to="/contact-us">
-              <Button variant="hero" size="xl">
-                Schedule A Call
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-            </Link>
+            <div className="grid lg:grid-cols-2 gap-0">
+              {/* Left: Call CTA */}
+              <div className="p-8 md:p-12 flex flex-col justify-center">
+                <h3 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+                  {ctaTitle}
+                </h3>
+                <p className="text-primary-foreground/80 text-lg mb-8">
+                  {ctaDescription}
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <a href="tel:+918977079433">
+                    <Button variant="hero" size="xl" className="group">
+                      <Phone className="w-5 h-5" />
+                      Call Now: +91-8977079433
+                    </Button>
+                  </a>
+                  <Link to="/contact-us">
+                    <Button variant="hero-outline" size="xl">
+                      Contact Us
+                      <ArrowRight className="w-5 h-5" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right: Request a Call Back Form */}
+              <div className="p-8 md:p-12 bg-white/10 backdrop-blur-sm">
+                <h4 className="font-display text-2xl font-bold text-primary-foreground mb-6">
+                  Request a Call Back
+                </h4>
+                {submitted ? (
+                  <div className="flex flex-col items-center justify-center py-8 text-center">
+                    <CheckCircle2 className="w-12 h-12 text-accent mb-4" />
+                    <p className="text-primary-foreground font-semibold text-lg">Thank you! We'll call you back shortly.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleCallbackSubmit} className="space-y-4">
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <Input
+                        required
+                        placeholder="Your Name"
+                        value={callbackForm.name}
+                        onChange={(e) => setCallbackForm({ ...callbackForm, name: e.target.value })}
+                        className="bg-white/10 border-white/20 text-primary-foreground placeholder:text-primary-foreground/60 h-11"
+                      />
+                      <Input
+                        required
+                        type="tel"
+                        placeholder="Phone Number"
+                        value={callbackForm.phone}
+                        onChange={(e) => setCallbackForm({ ...callbackForm, phone: e.target.value })}
+                        className="bg-white/10 border-white/20 text-primary-foreground placeholder:text-primary-foreground/60 h-11"
+                      />
+                    </div>
+                    <Input
+                      type="email"
+                      placeholder="Email Address"
+                      value={callbackForm.email}
+                      onChange={(e) => setCallbackForm({ ...callbackForm, email: e.target.value })}
+                      className="bg-white/10 border-white/20 text-primary-foreground placeholder:text-primary-foreground/60 h-11"
+                    />
+                    <Input
+                      placeholder="Brief message (optional)"
+                      value={callbackForm.message}
+                      onChange={(e) => setCallbackForm({ ...callbackForm, message: e.target.value })}
+                      className="bg-white/10 border-white/20 text-primary-foreground placeholder:text-primary-foreground/60 h-11"
+                    />
+                    <Button
+                      type="submit"
+                      variant="hero"
+                      size="lg"
+                      disabled={isSubmitting}
+                      className="w-full font-bold"
+                    >
+                      {isSubmitting ? 'Sending...' : 'Request Call Back'}
+                      {!isSubmitting && <ArrowRight className="w-5 h-5" />}
+                    </Button>
+                  </form>
+                )}
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
